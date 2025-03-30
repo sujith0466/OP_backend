@@ -1,11 +1,15 @@
 from flask import Flask, request, jsonify, send_file
+from flask_cors import CORS  # Import CORS
 from back_end import generate_op_sheet
 from datetime import datetime
 import os
 
 app = Flask(__name__)
+CORS(app)  # ✅ Enable CORS for all routes
 
-# ✅ Add a route for the base URL to confirm the backend is running
+# ✅ Optional: Restrict CORS to only your frontend
+# CORS(app, origins=["https://op-generator.onrender.com"])
+
 @app.route('/', methods=['GET'])
 def home():
     return jsonify({"message": "Backend is running!"}), 200
