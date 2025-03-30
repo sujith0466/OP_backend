@@ -5,6 +5,11 @@ import os
 
 app = Flask(__name__)
 
+# ✅ Add a route for the base URL to confirm the backend is running
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({"message": "Backend is running!"}), 200
+
 @app.route('/generate', methods=['POST'])
 def generate():
     data = request.json
@@ -31,4 +36,3 @@ def generate():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=10000)
-
