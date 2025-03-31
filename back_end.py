@@ -2,7 +2,6 @@ from reportlab.pdfgen import canvas  # Import the canvas module from ReportLab f
 import random  # Import the random module for generating random numbers
 import os  # Import the os module for interacting with the operating system (e.g., creating directories)
 from datetime import datetime  # Import the datetime module for handling dates and times
-import qrcode  # Import the qrcode module for generating QR codes
 
 # Disease to department mapping
 disease_map = {
@@ -56,13 +55,6 @@ def generate_op_sheet(name, age, mobile, symptom, gender, date_time):
     c.setFont("Helvetica-Bold", 12)
     c.drawString(50, 700, f"Doctor: {doctor}")
     c.drawString(250, 700, f"Room No: {room}")
-    
-    # Generate QR Code for Patient Details
-    qr_data = f"Name: {name}\nAge: {age}\nMobile: {mobile}\nDoctor: {doctor}\nRoom: {room}"
-    qr = qrcode.make(qr_data)
-    qr_path = os.path.join(folder, f"{name}_QR.png")
-    qr.save(qr_path)
-    c.drawInlineImage(qr_path, 400, 700, 80, 80)
     
     # Table Header
     c.setFont("Helvetica-Bold", 12)
