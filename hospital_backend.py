@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_file
+from flask import Flask,CORS, request, jsonify, send_file
 from back_end import generate_op_sheet
 from datetime import datetime
 import logging
